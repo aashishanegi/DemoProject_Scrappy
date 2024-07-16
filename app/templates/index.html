@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Listings</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Job Listings</h1>
+        <form method="post" action="/search">
+            <input type="text" name="query" placeholder="Search for jobs...">
+            <button type="submit">Search</button>
+        </form>
+        <div class="job-listings">
+            {% for job in jobs %}
+                <div class="job-card">
+                    <h2>{{ job[1] }}</h2>
+                    <p><strong>Company:</strong> {{ job[2] }}</p>
+                    <p><strong>Location:</strong> {{ job[3] }}</p>
+                    <p><strong>Salary:</strong> {{ job[4] }}</p>
+                    <p><strong>Requirements:</strong> {{ job[5] }}</p>
+                    <a href="{{ job[6] }}" target="_blank">Apply Here</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
